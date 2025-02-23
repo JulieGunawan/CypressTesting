@@ -18,5 +18,8 @@ describe('Fundamental tests', () => {
   // it.only('Only focus on single test', () => {
   //   cy.get('[data-test="accordion-item-6-title"]').contains('Fundamental 6) Focussing on a single test')  
   // })
+  it('Use custom commands', () => {
+    cy.getDataTest('fundamentals-header').should('contain.text', 'Testing Fundamentals')
+  })
 
 })
