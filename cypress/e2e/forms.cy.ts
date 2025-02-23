@@ -4,7 +4,9 @@ describe('form tests', () => {
     })
     it('Test if we are in the correct page', () => {
         cy.contains(/Testing Forms/i)
-        cy.getDataTest('subscribe-input').find('input').type('test@code.io')
+        cy.getDataTest('subscribe-input').find('input').type('test@code.com')
+        cy.contains(/Successfully subbed/i).should('not.exist')
         cy.getDataTest('subscribe-button').click()
+        cy.contains(/Successfully subbed/i).should('exist')
     })
 })
