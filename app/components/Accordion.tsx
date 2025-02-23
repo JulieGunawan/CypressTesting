@@ -10,23 +10,23 @@ export default function ItemsAccordion({items}:{items: Item[]}) {
   return (
     <div style={{maxWidth: '70vw', minWidth: '50vw'}}>
         {
-            items.map((item) => {
-                return (
-                <Accordion data-test={`accordion-item-${item.id}`} key={item.id}>
-                    <AccordionSummary
-                      expandIcon={<ExpandMoreIcon />}
-                      id="panel1a-header"
-                    >
-                      <Typography>{item.summary}</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography>
-                        {item.details}
-                      </Typography>
-                    </AccordionDetails>
-                </Accordion>
-                )
-            })
+          items.map((item) => {
+              return (
+              <Accordion data-test={`accordion-item-${item.id}`} key={item.id}>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    id="panel1a-header"
+                  >
+                    <Typography data-test={`accordion-item-${item.id}-title`}>{item.summary}</Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography>
+                      {item.details}
+                    </Typography>
+                  </AccordionDetails>
+              </Accordion>
+              )
+          })
         }
     </div>
   );
