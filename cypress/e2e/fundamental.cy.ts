@@ -1,5 +1,3 @@
-import { Typography } from "@mui/material"
-
 describe('Fundamental tests', () => {
   beforeEach(() => {
     cy.visit('/fundamentals')
