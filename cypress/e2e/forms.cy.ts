@@ -9,6 +9,12 @@ describe('form tests', () => {
         cy.contains(/Successfully subbed/i).should('not.exist')
         cy.getDataTest('subscribe-button').click()
         cy.contains(/Successfully subbed/i).should('exist')
+        cy.wait(3000)
+        cy.contains(/Successfully subbed/i).should('not.exist')
+
+        cy.get('@subscribe-input').type('test@code.io')
+        cy.getDataTest('subscribe-button').click()
+        cy.contains(/Invalid email/i).should('exist')
     })
 
 })
