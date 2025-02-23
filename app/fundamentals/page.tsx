@@ -1,6 +1,11 @@
 import ItemsAccordion from '../components/Accordion'
 import styles from './fundamentals.module.css'
 
+export type Item= {
+  summary: string,
+  details: string,
+  id: string
+}
 const items = [
     {
       summary: 'Fundamental 1) Describe blocks',
@@ -66,7 +71,7 @@ const items = [
 export default function FundamentalsPage(){
     return (
         <main className={styles.main}>
-            <h1 className={styles.header}>
+            <h1 data-test="fundamentals-header" className={styles.header}>
                 Testing Fundamentals
             </h1>
             <ItemsAccordion items={items} />

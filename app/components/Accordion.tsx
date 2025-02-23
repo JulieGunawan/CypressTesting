@@ -4,14 +4,15 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Item } from '../fundamentals/page';
 
-export default function ItemsAccordion({items}) {
+export default function ItemsAccordion({items}:{items: Item[]}) {
   return (
     <div style={{maxWidth: '70vw', minWidth: '50vw'}}>
         {
             items.map((item) => {
                 return (
-                <Accordion key={item.id}>
+                <Accordion data-test={`accordion-item-${item.id}`} key={item.id}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       id="panel1a-header"
