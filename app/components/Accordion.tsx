@@ -20,7 +20,7 @@ export default function ItemsAccordion({items}:{items: Item[]}) {
                     <Typography data-test={`accordion-item-${item.id}-title`}>{item.summary}</Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography>
+                    <Typography data-test={`accordion-item-${item.id}-details`}>
                       {item.details}
                     </Typography>
                   </AccordionDetails>
