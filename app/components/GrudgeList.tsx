@@ -44,7 +44,7 @@ export default function GrudgeList(){
 
     return (
         <div style={{margin: '20px'}}>
-            <h3 style={{margin: '20px 0px'}}>{title}</h3>
+            <h3 data-test='grudge-list-title'style={{margin: '20px 0px'}}>{title}</h3>
             <div>
             <TextField 
             label="Add Grudge" 
@@ -61,7 +61,7 @@ export default function GrudgeList(){
             <ul data-test="grudge-list" style={{color: 'white', listStyleType: 'none'}}>
                 {
                     grudges.length > 0 && (
-                        grudges.map((g) => {
+                        grudges.map((g: Grudge) => {
                            return ( 
                            <li key={g.id}>
                                 <span>
