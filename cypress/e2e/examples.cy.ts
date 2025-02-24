@@ -12,4 +12,11 @@ describe('Various examples', () => {
         cy.getDataTest('nav-fundamentals').click()
         cy.location("pathname").should("equal", "/fundamentals")
     })
+    it.only('intercepts', () => {
+        //returning mock data
+        cy.intercept('POST', 'http://localhost:3000/examples', {
+            fixture: 'example.json'
+        })
+        cy.getDataTest('post-button').click()
+    })
 })
