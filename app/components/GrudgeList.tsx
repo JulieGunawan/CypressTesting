@@ -2,13 +2,17 @@
 import { Button, TextField } from "@mui/material"
 import { useReducer, useState } from "react"
 
+export type Grudge = {
+    id: number,
+    text: string
+}
 function grudgeReducer(state, action){
     console.log({state,action})
     if (action.type === 'ADD'){
         return [...state, action.payload]
     }
     if (action.type === 'REMOVE'){
-        return state.filter((grudge) => grudge.id !== action.payload.id)
+        return state.filter((grudge:Grudge) => grudge.id !== action.payload.id)
     }
     if (action.type === 'CLEAR'){
         return []
@@ -24,7 +28,7 @@ export default function GrudgeList(){
 
     const title = grudges.length > 0 ? 'Grudges' : 'Add Some Grudges'
 
-    function deleteGrudge(grudge){
+    function deleteGrudge(grudge: Grudge){
         dispatch({type: 'REMOVE', payload: grudge})
     }
 
@@ -34,7 +38,7 @@ export default function GrudgeList(){
 
     function addGrudge(){
         if (!inputValue) return
-        dispatch({type: 'ADD', payload: {text: inputValue, id: Math.random()}})
+        dispatch({type: 'ADD', payload: {text: inputValue, id: Math.floor(Math.random()*10)}})
         setInputValue('')
     }
 
@@ -72,7 +76,10 @@ export default function GrudgeList(){
                 }
             </ul>
             {
-                grudges.length > 0 && <Button onClick={clearGrudges}>Clear</Button>
+                grudges.length > 0 && 
+                <Button 
+                data-test="clear-button" 
+                onClick={clearGrudges}>Clear</Button>
             }
         </div>
     )

@@ -26,6 +26,8 @@ describe('Various examples', () => {
             cy.get('li').should('have.length', 0)
         })
 
+        cy.getDataTest('clear-button').should('not.exist')
+
         cy.getDataTest('grudge-input').within(() => {
             cy.get('input').type('some grudge')
         }).as('input-grudge')
@@ -52,5 +54,7 @@ describe('Various examples', () => {
             cy.get('li').should('have.length', 1)
             cy.get('li').its(0).should('contains.text', 'another grudge')
         })
+        cy.getDataTest('clear-button').should('exist')
+        cy.getDataTest('clear-button').click()
     })
 })
