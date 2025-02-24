@@ -28,10 +28,18 @@ describe('Various examples', () => {
 
         cy.getDataTest('grudge-input').within(() => {
             cy.get('input').type('some grudge')
-        })
+        }).as('input-grudge')
         cy.getDataTest('add-grudge-button').click()
         cy.getDataTest('grudge-list').within(() => {
             cy.get('li').should('have.length', 1)
+        })
+
+        cy.get('@input-grudge').within(() => {
+            cy.get('input').type('another grudge')
+        })
+        cy.getDataTest('add-grudge-button').click()
+        cy.getDataTest('grudge-list').within(() => {
+            cy.get('li').should('have.length', 2)
         })
     })
 })
