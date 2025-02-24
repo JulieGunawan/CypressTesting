@@ -12,11 +12,26 @@ describe('Various examples', () => {
         cy.getDataTest('nav-fundamentals').click()
         cy.location("pathname").should("equal", "/fundamentals")
     })
-    it.only('intercepts', () => {
+    it('intercepts', () => {
         //returning mock data
         cy.intercept('POST', 'http://localhost:3000/examples', {
             fixture: 'example.json'
         })
         cy.getDataTest('post-button').click()
+    })
+    it.only('grudges', () => {
+        cy.contains(/add some grudges/i)
+        //shouldn't have any item in the list
+        cy.getDataTest('grudge-list').within(() => {
+            cy.get('li').should('have.length', 0)
+        })
+
+        cy.getDataTest('grudge-input').within(() => {
+            cy.get('input').type('some grudge')
+        })
+        cy.getDataTest('add-grudge-button').click()
+        cy.getDataTest('grudge-list').within(() => {
+            cy.get('li').should('have.length', 1)
+        })
     })
 })
